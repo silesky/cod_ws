@@ -1,14 +1,17 @@
 {
   "name": "client",
-  "version": "1.0.0",
-  "description": "",
-  "main": "script.js",
-  "scripts": {
-    "dev": "live-server ."
-  },
-  "author": "",
-  "license": "ISC",
+  "version": "0.0.1",
   "devDependencies": {
-    "live-server": "^1.2.1"
+    "http-server": "^0.11.1",
+    "tslib": "~1.10.0",
+    "tslint": "^5.18.0",
+    "tslint-microsoft-contrib": "~6.2.0",
+    "tsutils": "~3.14.0",
+    "typescript": "~3.5.0"
+  },
+  "scripts": {
+    "start": "npm run build && http-server . -p 8000",
+    "build": "tsc -p tsconfig.json",
+    "build:watch": "npm run build -- -w"
   }
 }

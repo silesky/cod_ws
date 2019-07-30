@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "module": "esnext",
+    "experimentalDecorators": true,
+    "target": "es6",
+    "lib": ["es2018", "dom"],
+    "rootDir": ".",
+    "outDir": "build",
+    "removeComments": true
+  },
+  "include": ["src/**/*"]
+}

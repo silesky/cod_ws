@@ -1,37 +1,31 @@
-/**
- * Some predefined delays (in milliseconds).
- */
-export enum Delays {
-  Short = 500,
-  Medium = 2000,
-  Long = 5000,
+#!/usr/bin/env node
+
+import * as crypto from 'crypto';
+import { Key } from 'readline';
+
+const getRandomBytes = (): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    crypto.randomBytes(10000, (err, buf) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(buf.toString('hex'));
+    });
+  });
+};
+
+process.stdin.on('keypress', (_, key: Key) => {
+  key.ctrl && key.name === 'c' && process.exit(0);
+});
+
+const run = async () => {
+  const bytes = await getRandomBytes();
+  console.log(bytes);
+};
+
+const main: VoidFunction = () => {
+  run();
+  setInterval(run, 1000)
 }
 
-/**
- * Returns a Promise<string> that resolves after given time.
- *
- * @param {string} name - A name.
- * @param {number=} [delay=Delays.Medium] - Number of milliseconds to delay resolution of the Promise.
- * @returns {Promise<string>}
- */
-
-function delayedHello(
-  name: string,
-  delay: number = Delays.Medium,
-): Promise<string> {
-  return new Promise((resolve: (value?: string) => void) =>
-    setTimeout(() => resolve(`Hello, ${name}`), delay),
-  );
-}
-
-// Below are examples of using TSLint errors suppression
-// Here it is suppressing missing type definitions for greeter function
-// tslint:disable-next-line typedef
-export async function greeter(name) {
-  // tslint:disable-next-line no-unsafe-any no-return-await
-  console.log('greeting...')
-  return await delayedHello(name, Delays.Long);
-}
-
-
-greeter("seth")
+main();

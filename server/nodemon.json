@@ -4,9 +4,9 @@
     ".git",
     "node_modules/**"
   ],
-  "colours": true,
-  "verbose": true,
+  "verbose": false,
   "watch": [
     "src/**"
-  ]
+  ],
+  "ext": "ts"
 }
