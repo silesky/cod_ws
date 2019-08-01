@@ -18,9 +18,10 @@ const convertHexToBinary = (hex: string): string => {
       .toString(2)
       .padStart(8, '0');
 
+  const isEven = n => n % 2 === 0;
+
   const binaryStr: string = hex.split('').reduce((accum, _, idx) => {
-    const isDivBy2 = n => n % 2 === 0;
-    return isDivBy2(idx)
+    return isEven(idx)
       ? accum.concat(hex2bin(hex[idx - 1] + hex[idx]))
       : accum;
   }, '');
