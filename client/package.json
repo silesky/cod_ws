@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.0.1",
   "devDependencies": {
-    "http-server": "^0.11.1",
+    "http-server": "^0.11.2",
     "tslib": "~1.10.0",
     "tslint": "^5.18.0",
     "tslint-microsoft-contrib": "~6.2.0",
